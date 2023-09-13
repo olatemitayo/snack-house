@@ -6,14 +6,29 @@ import React from "react";
 import { cartdata } from "@/data/data";
 import Footer from "@/components/common/footer";
 import BackgroundLayout from "@/components/common/bg-layout";
+import useCartProduct from "@/hooks/use-cart-list";
 
 export default function cart() {
+  // const {
+  //   data: { results },
+  // } = useCartProduct();
+  // // const { res } = data;
+  const { data, isLoading } = useCartProduct();
+  console.log(data);
   return (
     <BackgroundLayout>
       <Navbar className="!bg-[#F1E7EB]" />
       <div className="mb-[3rem]">
-        <CartHeading />
-        <div>{cartdata.length > 0 ? <CartFull /> : <CartNone />}</div>
+        {isLoading ? (
+          <figure className="flex justify-center items-center w-full mt-[70px] h-[60vh] ">
+            <img src="./loadingstate.svg" alt="" />
+          </figure>
+        ) : (
+          <div>
+            <CartHeading />
+            <div>{data?.results?.length > 0 ? <CartFull /> : <CartNone />}</div>
+          </div>
+        )}
       </div>
       <Footer className="bg-[#FCF9FB]" />
     </BackgroundLayout>

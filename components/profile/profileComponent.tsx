@@ -1,5 +1,5 @@
 // import { ProfileLink } from "@/Data/data";
-import { UserDetails } from "@/pages/_app";
+// import { UserDetails } from "@/pages/_app";
 import { cookieStorage, usePortal } from "@ibnlanre/portal";
 import Link from "next/link";
 import router, { useRouter } from "next/router";
@@ -61,9 +61,9 @@ export default function ProfileComp({ children }: any) {
             <figure className="flex flex-col items-center gap-4">
               <img src="/dp.svg" alt="" />
               <h5 className="text-[#121212] font-bold">
-                {`${details.last_name} ${details.first_name}`}
+                {`${details?.last_name} ${details?.first_name}`}
               </h5>
-              <p>{details.email}</p>
+              <p>{details?.email}</p>
             </figure>
             <ul className="grid gap-4 text-center">
               {ProfileLink.map((item) => (

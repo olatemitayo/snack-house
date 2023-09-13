@@ -1,65 +1,53 @@
 import Link from "next/link";
 import Button from "../common/button";
 import ProfileComp from "./profileComponent";
-
-const History = [
-  {
-    id: "1",
-    img: "/yoghurt.svg",
-    alt: "yoghurt",
-    name: "ORGANIC CASHEW YOGHURT",
-    price: "$12.43",
-  },
-  {
-    id: "2",
-    img: "/roasted.svg",
-    alt: "roasted",
-    name: "ORIGINAL ROASTED CASHEW",
-    price: "$21.43",
-  },
-  {
-    id: "3",
-    img: "/butter.svg",
-    alt: "butter",
-    name: "ORIGINAL CASHEW BUTTER",
-    price: "$45.43",
-  },
-  {
-    id: "3",
-    img: "/butter.svg",
-    alt: "butter",
-    name: "ORIGINAL CASHEW BUTTER",
-    price: "$45.43",
-  },
-];
+import useCartProduct from "@/hooks/use-cart-list";
 
 export default function OrderHistory() {
+  const { data, isLoading } = useCartProduct();
   return (
     <div className="">
       <ProfileComp>
-        {History.length > 0 ? (
+        {data?.results?.length > 0 ? (
           <div>
             <h2 className="text-[32px] mb-[28px]">Order History</h2>
             <div className=" flex flex-col gap-6 justify-center items-center">
-              {History.map((item) => (
-                <div className="flex justify-between w-full pb-6 border-b border-[#EBDBE0]">
+              {data?.results.map((item: any) => (
+                <div className="flex justify-between mb-6 w-full pb-6 border-b border-[#EBDBE0]">
                   <div className="flex gap-7 items-center">
                     <figure>
-                      <img src={item.img} alt={item.alt} width={70} />
+                      {item?.product?.name?.includes("BUTTER") && (
+                        <img src={"/butter.svg"} alt={item.image} width={70} />
+                      )}
+                      {item?.product?.name?.includes("YOGHURT") && (
+                        <img src={"/yoghurt.svg"} alt={item.image} width={70} />
+                      )}
+                      {item?.product?.name?.includes("ROASTED") && (
+                        <img src={"/roasted.svg"} alt={item.image} width={70} />
+                      )}
+                      <img
+                        src={item.image}
+                        className="hidden"
+                        alt=""
+                        width={70}
+                      />
+                      {/* <img src={item.img} alt={item.alt} width={70} /> */}
                     </figure>
                     <div>
-                      <h3>{item.name}</h3>
-                      <h3>{item.price}</h3>
+                      <h3 className="">{item.product.name}</h3>
+                      <h3 className="font-semibold">
+                        {item.product.new_price}
+                      </h3>
                     </div>
                   </div>
                   <div className="grid gap-3">
                     <Button
                       text="Reorder"
-                      className=" px-[28.518px] py-[8.471px] rounded-[4px] w-[150px]  text-[9.035px]"
+                      className=" px-[28.518px] py-[8.471px] rounded-[4px] min-w-[150px]  text-[9.035px]"
                     />
                     <Button
                       text="Rate Product"
-                      className="bg-[#EDD5E7] px-[20.047px] rounded-[4px] py-[8.471px] w-[150px]  whitespace-nowrap text-[9.035px]"
+                      className="bg-[#EDD5E7] px-[20.047px] rounded-[4px] py-[8.471px] max-w-[150px]  whitespace-nowrap text-[9.035px]"
                     />
                   </div>
                 </div>

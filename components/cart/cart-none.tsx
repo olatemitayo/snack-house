@@ -15,14 +15,16 @@ export default function CartNone() {
         </figure>
         <div className="text-center grid gap-[clamp(8px,1vw,16px)]">
           <h3>Your cart is empty.</h3>
-          <p>
+          {/* <p>
             Please{" "}
             <Link className="cursor-pointer text-[#771132]" href={"/login"}>
               <span>log in</span>{" "}
             </Link>
             to see your recent orders or explore our current offers.
-          </p>
-          <Button text="Explore" className="cmd:w-full" />
+          </p> */}
+          <Link href={"/products"}>
+            <Button text="Explore" className="cmd:w-full" />
+          </Link>
         </div>
       </section>
     </div>

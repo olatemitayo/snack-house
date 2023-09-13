@@ -37,9 +37,9 @@ export default function CartFull() {
   const queryClient = useQueryClient();
 
   const { mutate, isLoading } = useMutation({
-    mutationFn: async (product_id: string | number) => {
+    mutationFn: async (id: string | number) => {
       const data = {
-        product_id,
+        product_id: id,
       };
       return await builder.use().cart.remove_from_cart(data);
     },
@@ -58,7 +58,7 @@ export default function CartFull() {
       <div className=" max-w-page mx-auto  px-[clamp(10px,6vw,100px)]">
         {data?.results.map((item: any) => (
           <div
-            key={item.product.id}
+            key={item.id}
             className="flex items-center  cmd:justify-center cmd:gap-6 flex-wrap justify-between w-full border-b  py-[clamp(28px,4vw,48px)]"
           >
             <figure>
@@ -83,8 +83,7 @@ export default function CartFull() {
                 {item?.product.new_price}
               </h3>
               <button
-                type="submit"
-                onClick={() => mutate(item.product_id)}
+                onClick={() => mutate(item.id)}
                 className="flex gap-10 hover:cursor-pointer px-4 py-1 text-[clamp(14px,0.5vw,16px)] text-[#CA1818]"
               >
                 Remove
