@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'Avenir';
+  src: url('/fonts/AvenirLTStd-Black.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* C:\Users\﻿TemitayoOlatunji\Desktop\cartSystem\snack-house\public\font\AvenirLTStd-Black.otf */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: 'Avenir', sans-serif;
+  outline: none;
+}
+
+
+.auth {
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(17px);
+}
+
+/* Custom styles for toast container */
+.custom-toast-container {
+  white-space: nowrap;
+  /* Prevent text from wrapping */
+
+  font-size: 20px;
+  /* Set background color to white */
+  color: black;
+  /* Set text color to black */
+}

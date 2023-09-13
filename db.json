@@ -1,0 +1,67 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "first_name": "Temitayo",
+      "last_name": "Olawale",
+      "email": "user@email.com",
+      "department": "Front End "
+    },
+    {
+      "id": 2,
+      "first_name": "Prosper",
+      "last_name": "Fire",
+      "email": "fire@email.com",
+      "department": "Front End "
+    },
+    {
+      "id": 3,
+      "first_name": "Mentor",
+      "last_name": "Singer",
+      "email": "mentor@email.com",
+      "department": "BackEnd "
+    },
+    {
+      "id": 5,
+      "first_name": "Tunde",
+      "last_name": "Shayo",
+      "email": "usejbed2r@email.com",
+      "department": "App  "
+    },
+    {
+      "id": 6,
+      "first_name": "Shayo",
+      "last_name": "Ariyo",
+      "email": "sariyo@email.com",
+      "department": "Dev Ops  "
+    },
+    {
+      "email": "apelumi@gmail.com",
+      "first_name": "Afolabi",
+      "last_name": "Pelumi",
+      "department": "Back End",
+      "id": 8
+    },
+    {
+      "email": "tmajed@firemail.com",
+      "first_name": "Adetola",
+      "last_name": "Majeed",
+      "department": "App",
+      "id": 9
+    },
+    {
+      "email": "bibro@gmail.com",
+      "first_name": "Ibrahim",
+      "last_name": "Bellow",
+      "department": "BackEnd",
+      "id": 10
+    },
+    {
+      "email": "chisom@gmail.com",
+      "first_name": "prosper",
+      "last_name": "temms",
+      "department": "frontend",
+      "id": 11
+    }
+  ]
+}
