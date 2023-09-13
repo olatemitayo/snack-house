@@ -78,6 +78,26 @@ export default function ProductItem({ item, boxStyle }: ProductItemProps) {
     },
   });
 
+  const { mutate: wishmutate, isLoading: wushLoading } = useMutation({
+    mutationFn: async (product_id: string | number) => {
+      const data = {
+        product_id,
+      };
+      return await builder.use().wishlist.api.add_to_wishlist(data);
+    },
+    mutationKey: builder.cart.add_to_Cart.get(),
+    onSuccess(data: any) {
+      if (data?.data?.detail) {
+        return toast.info("Product already in Wishlist");
+      }
+      toast.success("Item added to Wishlist");
+      queryClinet.invalidateQueries(["Wish List"]);
+    },
+    onError(error) {
+      handleError(error as ErrorType);
+    },
+  });
+
   return (
     <motion.div
       onMouseEnter={handleMouseEnter}
@@ -111,7 +131,13 @@ export default function ProductItem({ item, boxStyle }: ProductItemProps) {
         {isHovered ? (
           <Heart
             size={30}
-            onClick={(e) => setFill(!fill)}
+            // onClick={(e) =>}
+            onClick={() => {
+              if (!isLoading && item.id !== undefined) {
+                wishmutate(item.id);
+              }
+              setFill(!fill);
+            }}
             color="#A30551"
             className={`${fill ? "fill-[#A30551]" : null}`}
           />

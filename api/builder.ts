@@ -41,6 +41,15 @@ export const builder = createBuilder({
     remove_from_cart: (data: Record<"product_id", number | string>) =>
       API.post("/api/remove_from_cart/", data),
   },
+  wishlist: {
+    api: {
+      // wish list
+      list_wishlist_item: () => API.get("/api/list-wishlist-items/"),
+      //add to wish list
+      add_to_wishlist: (data: Record<"product_id", any>) =>
+        API.post("/api/wishlist/add/", data),
+    },
+  },
   products: {
     api: {
       //get lists of prodduvts
