@@ -1,23 +1,26 @@
 import useCartProduct from "@/hooks/use-cart-list";
-import { UserDetails } from "@/pages/_app";
+import { cookieStorage, usePortal } from "@ibnlanre/portal";
 import clsx from "clsx";
+import { Heart } from "iconsax-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+
+interface userprops {
+  first_name?: string;
+  last_name?: string;
+  picture?: string;
+  email?: string;
+  phone_number?: string;
+}
 
 export default function Icons({ className }: any) {
   const { data } = useCartProduct();
 
-  const [payload, setPayload] = useState<UserDetails>({
-    last_name: "",
-  });
+  const [details] = usePortal<userprops>(
+    "user_details",
+    JSON.parse(cookieStorage.getItem("sh_auth") as string)
+  );
 
-  useEffect(() => {
-    if (localStorage.getItem("my-user")) {
-      setPayload(JSON.parse(localStorage.getItem("my-user") as string));
-    }
-
-    return () => {};
-  }, []);
   return (
     <div>
       <div
@@ -26,11 +29,15 @@ export default function Icons({ className }: any) {
           className
         )}
       >
+        {" "}
         <img
           src="/search.svg"
           alt="search"
           className="w-[clamp(18px,1.5vw,24px)]"
         />
+        <Link href={"/wishlist"}>
+          <Heart className="w-[clamp(18px,1.5vw,24px)]" color="#000" />
+        </Link>
         <Link href={"/cart"} className="relative flex">
           <img
             src="/shoppingcart.svg"
@@ -42,7 +49,7 @@ export default function Icons({ className }: any) {
           </div>
         </Link>
         <Link href={"/profile"}>
-          {payload.last_name !== "" ? (
+          {details?.last_name !== "" ? (
             <img
               src="/dp.svg"
               alt="user"

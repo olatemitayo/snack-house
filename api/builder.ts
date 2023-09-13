@@ -32,11 +32,11 @@ export const builder = createBuilder({
     },
   },
   cart: {
+    // cart list
+    list_cart_item: () => API.get("/api/list-cart-items/"),
     //add product to cart
     add_to_Cart: (data: Record<"product_id" | "quantity", number | string>) =>
       API.post("/api/add_to_cart/", data),
-    // cart list
-    list_cart_item: () => API.get("/api/list-cart-items/"),
     // remove from cart
     remove_from_cart: (data: Record<"product_id", number | string>) =>
       API.post("/api/remove_from_cart/", data),
@@ -48,6 +48,9 @@ export const builder = createBuilder({
       //add to wish list
       add_to_wishlist: (data: Record<"product_id", any>) =>
         API.post("/api/wishlist/add/", data),
+      //remove from wish list
+      remove_from_wishlist: (data: Record<"product_id", number | string>) =>
+        API.post("/api/wishlist/remove/", data),
     },
   },
   products: {

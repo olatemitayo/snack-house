@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { UserDetails } from "@/pages/_app";
 import ProfileComp from "./profileComponent";
 import Button from "../common/button";
 import { ActionIcon } from "@mantine/core";
@@ -14,8 +13,6 @@ interface userprops {
 }
 
 export default function ProfileInfo() {
-  // const [details, setDetails] = useState<userprops>({});
-
   const [details] = usePortal<userprops>(
     "user_details",
     JSON.parse(cookieStorage.getItem("sh_auth") as string)

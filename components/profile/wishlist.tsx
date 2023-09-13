@@ -3,23 +3,6 @@ import ProfileComp from "./profileComponent";
 import Link from "next/link";
 import Button from "../common/button";
 
-const Wish = [
-  // {
-  //   id: "1",
-  //   img: "/yoghurt.svg",
-  //   alt: "yoghurt",
-  //   name: "ORGANIC CASHEW YOGHURT",
-  //   price: "$12.43",
-  // },
-  // {
-  //   id: "2",
-  //   img: "/roasted.svg",
-  //   alt: "roasted",
-  //   name: "ORIGINAL ROASTED CASHEW",
-  //   price: "$21.43",
-  // },
-];
-
 export default function WishList() {
   return (
     <div>
@@ -28,7 +11,7 @@ export default function WishList() {
           <div>
             <h2 className="text-[32px] mb-[28px]">Wish List</h2>
             <div className=" flex flex-col gap-6 justify-center items-center">
-              {Wish.map((item) => (
+              {Wish.map((item: any) => (
                 <div className="flex justify-between w-full pb-6 border-b border-[#EBDBE0]">
                   <div className="flex gap-7 items-center">
                     <figure>

@@ -3,16 +3,11 @@ import CartHeading from "@/components/cart/cart-heading";
 import CartNone from "@/components/cart/cart-none";
 import Navbar from "@/components/common/navbar";
 import React from "react";
-import { cartdata } from "@/data/data";
 import Footer from "@/components/common/footer";
 import BackgroundLayout from "@/components/common/bg-layout";
 import useCartProduct from "@/hooks/use-cart-list";
 
 export default function cart() {
-  // const {
-  //   data: { results },
-  // } = useCartProduct();
-  // // const { res } = data;
   const { data, isLoading } = useCartProduct();
   console.log(data);
   return (
@@ -25,7 +20,7 @@ export default function cart() {
           </figure>
         ) : (
           <div>
-            <CartHeading />
+            <CartHeading text="Your Cart List" />
             <div>{data?.results?.length > 0 ? <CartFull /> : <CartNone />}</div>
           </div>
         )}

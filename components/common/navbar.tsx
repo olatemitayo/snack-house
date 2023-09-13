@@ -4,8 +4,6 @@ import { useDisclosure } from "@mantine/hooks";
 import { Burger, Popover } from "@mantine/core";
 import { useRouter } from "next/router";
 import Icons from "./navbarIcons";
-import { UserDetails } from "@/pages/_app";
-import { useState, useEffect } from "react";
 import useCartProduct from "@/hooks/use-cart-list";
 const navList = [
   {
@@ -39,15 +37,6 @@ export default function Navbar({ className }: NavbarProps) {
   const router = useRouter();
   const [opened, { toggle }] = useDisclosure(false);
   const label = opened ? "Close navigation" : "Open navigation";
-  const [payload, setPayload] = useState<UserDetails>({
-    first_name: "",
-  });
-
-  useEffect(() => {
-    if (localStorage.getItem("my-user")) {
-      setPayload(JSON.parse(localStorage.getItem("my-user") as string));
-    }
-  }, []);
 
   return (
     <div
