@@ -30,11 +30,11 @@ export const ProfileLink = [
     link: "/profile/order_history",
   },
 
-  {
-    id: "3",
-    title: "Wish List",
-    link: "/profile/wishlist",
-  },
+  // {
+  //   id: "3",
+  //   title: "Wish List",
+  //   link: "/profile/wishlist",
+  // },
   {
     id: "4",
     title: "Change Password",

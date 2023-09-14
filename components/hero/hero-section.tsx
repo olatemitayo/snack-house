@@ -32,9 +32,9 @@ export default function HeroSection() {
           transition={{ duration: 1 }}
           className="w-1/2 grid gap-6 cmd:w-full cmd:text-center cmd:max-w-none  "
         >
-          <h1 className="text-[clamp(24px,4vw,64px)]  font-extrabold text-[#121212]">
+          {/* <h1 className="text-[clamp(24px,4vw,64px)]  font-extrabold text-[#121212]">
             Welcome {user?.last_name}
-          </h1>
+          </h1> */}
           <h1 className="text-[clamp(24px,4vw,64px)]  font-extrabold text-[#121212]">
             Enjoy The Premium Cashew Experience
           </h1>

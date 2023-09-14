@@ -2,6 +2,13 @@ import { createBuilder } from "@ibnlanre/portal";
 import { API, AUTHAPI, USERAPI } from "./axios-config";
 import { LoginData } from "@/types";
 
+export interface IUser {
+  first_name: string;
+  last_name: string;
+  email: string;
+  department: string;
+}
+
 export const builder = createBuilder({
   accounts: {
     api: {
@@ -68,6 +75,7 @@ export const builder = createBuilder({
     create: (
       data: Record<"first_name" | "last_name" | "email" | "department", string>
     ) => USERAPI.post("/users", data),
+    details: (id: string) => USERAPI.get<IUser>(`/users/${id}`),
   },
 });
 

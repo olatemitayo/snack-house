@@ -39,9 +39,8 @@ export default function SignIn() {
       await builder.use().accounts.api.sign_in(myForm.values),
     mutationKey: builder.accounts.api.sign_in.get(),
     onSuccess(data, variables, context) {
-      setCookieState(JSON.stringify(data.data));
-      cookieStorage.setItem("sh_auth", JSON.stringify(data.data));
-
+      setCookieState(JSON.stringify(data?.data));
+      cookieStorage.setItem("sh_auth", JSON.stringify(data?.data));
       myForm.reset();
       toast.success("Welcome", { autoClose: 2000 });
       push("/");
@@ -83,12 +82,11 @@ export default function SignIn() {
               withAsterisk
               {...myForm.getInputProps("password")}
             />
-            <Link
-              href={"/forgot-password"}
-              className="flex justify-end  pb-[21px]"
-            >
-              <p className="text-[#771132]">Forget Password?</p>
-            </Link>
+            <div className="pb-[21px] " style={{ width: "max-content" }}>
+              <Link href={"/forgot-password"}>
+                <p className="text-[#771132] ">Forget Password?</p>
+              </Link>
+            </div>
             <AuthButton text="Sign In" loading={isLoading} />
           </form>
         </div>

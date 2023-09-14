@@ -1,33 +1,12 @@
-import { builder } from "@/api/builder";
 import useWishList from "@/hooks/use-wish-list";
-import { handleError, ErrorType } from "@/utils/handle-error";
-import { Button } from "@mantine/core";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Link } from "iconsax-react";
+import { useQueryClient } from "@tanstack/react-query";
 import React from "react";
-import { toast } from "react-toastify";
 
 export default function WishListFull() {
   const { data } = useWishList();
   console.log(data);
   const queryClient = useQueryClient();
 
-  //   const { mutate, isLoading } = useMutation({
-  //     mutationFn: async (id: string | number) => {
-  //       const data = {
-  //         product_id: id,
-  //       };
-  //       return await builder.use().wishlist.api.remove_from_wishlist(data);
-  //     },
-  //     mutationKey: builder.cart.remove_from_cart.get(),
-  //     onSuccess(data: any) {
-  //       toast.success("Item removed from Wish List");
-  //       queryClient.invalidateQueries(["Wish List"]);
-  //     },
-  //     onError(error) {
-  //       handleError(error as ErrorType);
-  //     },
-  //   });
   return (
     <div className="">
       <div className=" max-w-page mx-auto  px-[clamp(10px,6vw,100px)]">
