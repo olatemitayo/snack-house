@@ -116,6 +116,7 @@ export default function ProductItem({ item, boxStyle }: ProductItemProps) {
         "cmd:order-2",
         "p-6",
         "w-[30%]",
+        "pview:w-[40%]",
         "lg:!min-h-[420px]",
         "xl:!min-h-[400px]",
         "clg:w-[45%]",

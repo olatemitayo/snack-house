@@ -15,6 +15,11 @@
   outline: none;
 }
 
+/* .grid-container {
+  display: grid;
+  gap: 5px;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 3fr));
+} */
 
 .auth {
   background-color: rgba(255, 255, 255, 0.6);

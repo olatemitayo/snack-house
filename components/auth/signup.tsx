@@ -65,8 +65,8 @@ export default function SignUp() {
 
   return (
     <div className="bg-auth-bg  bg-cover  bg-center bg-no-repeat h-screen flex ">
-      <div className="px-[clamp(10px,8vw,100px)] mt-[70px] items-center py-4 max-w-[1440px] mx-auto w-full  flex justify-center ">
-        <div className="w-[40%] lg:w-[50%] md:w-[90%] csm:w-full  border rounded-[20px] py-[clamp(20px,5vw,70px)] border-[##898989] mx-auto auth ">
+      <div className="px-[clamp(10px,8vw,100px)]  mt-[70px] items-center py-4 max-w-[1440px] mx-auto w-full  flex justify-center ">
+        <div className="w-[40%] lg:w-[50%] md:w-[90%] csm:w-full  border rounded-[20px] py-[clamp(20px,3vw,28px)] border-[##898989] mx-auto auth ">
           <AuthHeaders
             header="Create your account"
             href="/login"
@@ -74,7 +74,7 @@ export default function SignUp() {
             text="Sign in here"
           />
           <form
-            className="w-[80%] mx-auto mt-[clamp(20px,4vw,60px)] "
+            className="w-[80%] mx-auto mt-[clamp(20px,4vw,40px)] "
             onSubmit={myForm.onSubmit((value) => {
               mutate();
             })}
@@ -84,7 +84,7 @@ export default function SignUp() {
               radius="md"
               size="lg"
               withAsterisk
-              className="w-full py-[21px]"
+              className="w-full py-3"
               {...myForm.getInputProps("first_name")}
             />
             <TextInput
@@ -92,7 +92,7 @@ export default function SignUp() {
               radius="md"
               size="lg"
               withAsterisk
-              className="w-full py-[21px]"
+              className="w-full py-3"
               {...myForm.getInputProps("last_name")}
             />
             <TextInput
@@ -100,14 +100,14 @@ export default function SignUp() {
               radius="md"
               size="lg"
               withAsterisk
-              className="w-full py-[21px]"
+              className="w-full py-3"
               {...myForm.getInputProps("email")}
             />
             <PasswordInput
               placeholder="Password"
               radius="md"
               size="lg"
-              className="w-full py-[21px]"
+              className="w-full py-3"
               withAsterisk
               {...myForm.getInputProps("password")}
             />
@@ -115,7 +115,7 @@ export default function SignUp() {
               placeholder="Confirm Password"
               radius="md"
               size="lg"
-              className="w-full py-[21px]"
+              className="w-full py-4 mb-4"
               withAsterisk
               {...myForm.getInputProps("confirm_password")}
             />
