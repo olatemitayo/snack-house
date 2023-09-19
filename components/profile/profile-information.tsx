@@ -28,7 +28,7 @@ export default function ProfileInfo() {
               <div className="flex border px-5 py-4 w-[80%] justify-between rounded-lg">
                 <input
                   type="text"
-                  placeholder={details.first_name}
+                  placeholder={details?.first_name}
                   className="placeholder:text-black w-full"
                 />
                 <ActionIcon>
@@ -38,7 +38,7 @@ export default function ProfileInfo() {
               <div className="flex border px-5 py-4 w-[80%] justify-between rounded-lg">
                 <input
                   type="text"
-                  placeholder={details.last_name}
+                  placeholder={details?.last_name}
                   className="placeholder:text-black w-full"
                 />
                 <ActionIcon>
@@ -48,7 +48,7 @@ export default function ProfileInfo() {
               <div className="flex border px-5 py-4 w-[80%] justify-between rounded-lg">
                 <input
                   type="text"
-                  placeholder={details.email}
+                  placeholder={details?.email}
                   className="placeholder:text-black w-full"
                 />
                 <ActionIcon>
@@ -56,10 +56,10 @@ export default function ProfileInfo() {
                 </ActionIcon>
               </div>
               <div className="flex border px-5 py-4 w-[80%] justify-between rounded-lg">
-                {details.last_name == "" ? (
+                {details?.last_name == "" ? (
                   <input
                     type="text"
-                    placeholder={details.phone_number}
+                    placeholder={details?.phone_number}
                     className="placeholder:text-black w-full"
                   />
                 ) : (

@@ -3,16 +3,11 @@ import { useForm, yupResolver } from "@mantine/form";
 import * as yup from "yup";
 import ProfileComp from "./profileComponent";
 import Button from "../common/button";
-import axios from "axios";
-import { BASE_URL } from "@/config";
-import { ToastContainer, toast } from "react-toastify";
-import { PasswordInput, TextInput } from "@mantine/core";
-
-interface PasswordUpdateProps {
-  old_password: string;
-  new_password: string;
-  confirm_password: string;
-}
+import { toast } from "react-toastify";
+import { PasswordInput } from "@mantine/core";
+import { useMutation } from "@tanstack/react-query";
+import { builder } from "@/api/builder";
+import { ErrorType, handleError } from "@/utils/handle-error";
 
 const schema = yup.object().shape({
   old_password: yup.string().required("Old password is required"),
@@ -45,7 +40,6 @@ const schema = yup.object().shape({
 });
 
 export default function PasswordChange() {
-  const [loading, setLoading] = useState(false);
   const myForm = useForm({
     initialValues: {
       old_password: "",
@@ -55,56 +49,70 @@ export default function PasswordChange() {
     validate: yupResolver(schema),
   });
 
-  const token = JSON.parse(localStorage.getItem("my-user") as string)?.access;
+  const { mutate, isLoading } = useMutation({
+    mutationFn: async () => {
+      await builder.use().profile.api.update_password(myForm.values);
+    },
+    mutationKey: builder.profile.api.update_password.get(),
+    onSuccess(data) {
+      myForm.reset();
+      toast.success("Password successfully updated");
+    },
+    onError(error, variables, context) {
+      handleError(error as ErrorType);
+    },
+  });
 
-  const handleUpdatePassword = async (value: PasswordUpdateProps) => {
-    try {
-      setLoading(true);
-      const { data } = await axios.put(
-        `${BASE_URL}/accounts/api/change_password/`,
-        {
-          old_password: value.old_password,
-          new_password: value.new_password,
-          confirm_password: value.confirm_password,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      if (data) {
-        setLoading(false);
-        toast.success("Password updated successfully");
-        console.log(data);
-      }
-    } catch (error: any) {
-      setLoading(false);
-      const errorResponse = error?.response?.data;
-      if (errorResponse) {
-        if (typeof errorResponse === "string") toast.error(errorResponse);
-        else if (typeof errorResponse === "object") {
-          if (!Array.isArray(errorResponse)) {
-            Object.values(errorResponse).forEach((item) => {
-              if (typeof item === "string") toast.error(item);
-              else if (Array.isArray(item)) {
-                item.forEach((el) => {
-                  toast.error(el);
-                });
-              } else toast.error("Something went wrong");
-            });
-          } else if (Array.isArray(errorResponse)) {
-            errorResponse.forEach((item) => {
-              if (typeof item === "string") {
-                toast.error(item);
-              } else toast.error("Something went wrong");
-            });
-          }
-        } else toast.error("Something went wrong");
-      } else toast.error("Network Eror");
-    }
-  };
+  // const token = JSON.parse(localStorage.getItem("my-user") as string)?.access;
+
+  // const handleUpdatePassword = async (value: PasswordUpdateProps) => {
+  //   try {
+  //     setLoading(true);
+  //     const { data } = await axios.put(
+  //       `${BASE_URL}/accounts/api/change_password/`,
+  //       {
+  //         old_password: value.old_password,
+  //         new_password: value.new_password,
+  //         confirm_password: value.confirm_password,
+  //       },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+  //     if (data) {
+  //       setLoading(false);
+  //       toast.success("Password updated successfully");
+  //       console.log(data);
+  //     }
+  //   } catch (error: any) {
+  //     setLoading(false);
+  //     const errorResponse = error?.response?.data;
+  //     if (errorResponse) {
+  //       if (typeof errorResponse === "string") toast.error(errorResponse);
+  //       else if (typeof errorResponse === "object") {
+  //         if (!Array.isArray(errorResponse)) {
+  //           Object.values(errorResponse).forEach((item) => {
+  //             if (typeof item === "string") toast.error(item);
+  //             else if (Array.isArray(item)) {
+  //               item.forEach((el) => {
+  //                 toast.error(el);
+  //               });
+  //             } else toast.error("Something went wrong");
+  //           });
+  //         } else if (Array.isArray(errorResponse)) {
+  //           errorResponse.forEach((item) => {
+  //             if (typeof item === "string") {
+  //               toast.error(item);
+  //             } else toast.error("Something went wrong");
+  //           });
+  //         }
+  //       } else toast.error("Something went wrong");
+  //     } else toast.error("Network Eror");
+  //   }
+  // };
 
   return (
     <div>
@@ -114,8 +122,8 @@ export default function PasswordChange() {
           <div className=" flex flex-col gap-6 justify-center items-center">
             <form
               className="flex flex-col gap-6 justify-between w-full pb-6 "
-              onSubmit={myForm.onSubmit((value) => {
-                handleUpdatePassword(value);
+              onSubmit={myForm.onSubmit(() => {
+                mutate();
               })}
             >
               <PasswordInput
@@ -141,14 +149,14 @@ export default function PasswordChange() {
 
               <div className=" w-[80%]  rounded-lg">
                 <Button
-                  text={loading ? "Updating..." : "Update Password"}
+                  text={isLoading ? "Updating..." : "Update Password"}
                   type="submit"
                   className={
-                    loading
+                    isLoading
                       ? "bg-white !text-[#771132] !min-w-[227px] border border-[#771132]"
                       : "bg-[#771132] text-white"
                   }
-                  disabled={loading}
+                  disabled={isLoading}
                 />
               </div>
             </form>

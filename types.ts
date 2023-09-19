@@ -8,6 +8,11 @@ export interface LoginData {
   refresh?: string;
 }
 
+export interface PasswordUpdateProps {
+  old_password: string;
+  new_password: string;
+  confirm_password: string;
+}
 // export interface Product {
 //   id: number | string;
 //   name?: string;

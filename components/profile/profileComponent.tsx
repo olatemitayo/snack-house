@@ -27,7 +27,7 @@ export const ProfileLink = [
   {
     id: "2",
     title: "Order History",
-    link: "/profile/order_history",
+    link: "/profile/order-history",
   },
 
   // {
@@ -38,7 +38,7 @@ export const ProfileLink = [
   {
     id: "4",
     title: "Change Password",
-    link: "/profile/change_password",
+    link: "/profile/change-password",
   },
   {
     id: "5",

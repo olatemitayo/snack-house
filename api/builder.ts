@@ -1,6 +1,7 @@
 import { createBuilder } from "@ibnlanre/portal";
 import { API, AUTHAPI, USERAPI } from "./axios-config";
 import { LoginData } from "@/types";
+import { PasswordInputProps } from "@mantine/core";
 
 export const builder = createBuilder({
   accounts: {
@@ -61,6 +62,16 @@ export const builder = createBuilder({
       featured_list: () => API.get("/api/featured_product/"),
       //get list of best products
       best_seller: () => API.get("/api/best_seller/"),
+    },
+  },
+  profile: {
+    api: {
+      update_password: (
+        data: Record<
+          "old_password" | "new_password" | "confirm_password",
+          string
+        >
+      ) => API.put("/accounts/api/change_password/", data),
     },
   },
 });
