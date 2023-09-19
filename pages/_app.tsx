@@ -28,7 +28,8 @@ export default function App({ Component, pageProps }: AppProps) {
         withNormalizeCSS
       >
         <ToastContainer
-          position="top-center"
+          className={"mt-12 cmd:mt-0 font-bold"}
+          position="top-right"
           transition={Slide}
           hideProgressBar
           autoClose={4000}

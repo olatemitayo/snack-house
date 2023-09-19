@@ -6,8 +6,6 @@ import Footer from "@/components/common/footer";
 import Navbar from "@/components/common/navbar";
 import WishListFull from "@/components/wishlist/wishlist-full";
 import useWishList from "@/hooks/use-wish-list";
-// import WishlistProduct from "@/components/wihslist/wish-list";
-import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
 export default function Wishlist() {

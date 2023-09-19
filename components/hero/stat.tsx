@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../common/button";
+import Link from "next/link";
 
 export default function Stat() {
   return (
@@ -12,7 +13,9 @@ export default function Stat() {
           <p className="mt-6 w-3/5 cmd:w-4/5 cmd:mx-auto cmd:text-center">
             We reached here with our hard work and dedication.
           </p>
-          <Button text="Order now" className="mt-8 cmd:w-full" />
+          <Link href={"/products"}>
+            <Button text="Order now" className="mt-8 cmd:w-full" />
+          </Link>
         </div>
         <div className="w-2/5 cmd:w-full grid gap-20 cmd:gap-12">
           <div className="flex justify-between">

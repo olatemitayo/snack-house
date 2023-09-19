@@ -3,7 +3,6 @@ import Footer from "@/components/common/footer";
 import Navbar from "@/components/common/navbar";
 import Subscribe from "@/components/hero/subscribe";
 import ProductList from "@/components/products/product-list";
-import React from "react";
 
 export default function products() {
   return (

@@ -2,6 +2,7 @@ import React from "react";
 import ProductItem from "../products/product-item";
 import { builder } from "@/api/builder";
 import { useQuery } from "@tanstack/react-query";
+import { ToastContainer, Slide } from "react-toastify";
 
 export default function FeaturedProduct() {
   const { data } = useQuery({
