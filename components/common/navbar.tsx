@@ -1,10 +1,11 @@
 import Link from "next/link";
 import clsx from "clsx";
 import { useDisclosure } from "@mantine/hooks";
-import { Burger, Popover } from "@mantine/core";
+import { Burger, Flex, Popover } from "@mantine/core";
 import { useRouter } from "next/router";
 import Icons from "./navbarIcons";
 import useCartProduct from "@/hooks/use-cart-list";
+import MobileIcons from "./mobileIcons";
 const navList = [
   {
     id: 1,
@@ -27,6 +28,8 @@ const navList = [
     link: "#",
   },
 ];
+
+// mobileNavL;
 
 interface NavbarProps {
   className?: string;
@@ -73,15 +76,20 @@ export default function Navbar({ className }: NavbarProps) {
         <div>
           <Icons />
           <div className="hidden cmd:block">
-            <Popover width={115} position="bottom" withArrow shadow="md">
-              <Popover.Target>
-                <Burger
-                  opened={opened}
-                  onClick={toggle}
-                  aria-label={label}
-                  color="#6B0F2D"
-                />
-              </Popover.Target>
+            <Popover width={180} position="bottom" withArrow shadow="md">
+              <Flex className="items-center" gap={"25px"}>
+                <Flex>
+                  <MobileIcons className="cmd:!flex" />
+                </Flex>
+                <Popover.Target>
+                  <Burger
+                    opened={opened}
+                    onClick={toggle}
+                    aria-label={label}
+                    color="#6B0F2D"
+                  />
+                </Popover.Target>
+              </Flex>
               <Popover.Dropdown>
                 <ul className="flex  flex-col gap-4">
                   {navList.map((item) => (
@@ -94,7 +102,6 @@ export default function Navbar({ className }: NavbarProps) {
                       </li>
                     </Link>
                   ))}
-                  <Icons className="cmd:!flex" />
                 </ul>
               </Popover.Dropdown>
             </Popover>
