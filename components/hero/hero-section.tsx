@@ -38,7 +38,7 @@ export default function HeroSection() {
           <h1 className="text-[clamp(24px,4vw,64px)]  font-extrabold text-[#121212]">
             Enjoy The Premium Cashew Experience
           </h1>
-          <p className="max-w-[80%] text-[#121212] cmd:max-w-full csm:text-[14px]">
+          <p className="w-[80%] text-[#121212] cmd:w-full csm:text-[14px]">
             Deliciously nutty cashew products made for maximum enjoyment in a
             serene environment.
           </p>
