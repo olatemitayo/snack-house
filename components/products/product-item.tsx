@@ -104,7 +104,105 @@ export default function ProductItem({ item, boxStyle }: ProductItemProps) {
     <>
       {" "}
       {isMobileView ? (
-        <div>Hello mobile</div>
+        <div
+          key={item.id}
+          className={clsx(
+            item.product_type === "per bottle" && "bg-[#E6F1FC]",
+            item.product_type === "per cup" && "bg-[#EFECE5]",
+            !(
+              item.product_type === "per bottle" ||
+              item.product_type === "per cup"
+            ) && "bg-[#EDD5E7]",
+            "flex",
+            "relative",
+            "flex-col",
+            "justify-around",
+            "cmd:order-2",
+            "p-6",
+            "w-[30%]",
+            "pview:w-[40%]",
+            "lg:!min-h-[420px]",
+            "xl:!min-h-[400px]",
+            "clg:w-[45%]",
+            "clg:!min-h-[380px]",
+            "gsm:w-full",
+            "!min-h-[470px]",
+            "rounded-lg",
+            "text-center",
+            boxStyle
+          )}
+        >
+          <div className="absolute right-2 cursor-pointer top-2">
+            <Heart
+              size={30}
+              // onClick={(e) =>}
+              onClick={() => {
+                if (!isLoading && item.id !== undefined) {
+                  wishmutate(item.id);
+                }
+                setFill(!fill);
+              }}
+              color="#A30551"
+              className={`${fill ? "fill-[#A30551]" : null}`}
+            />
+          </div>
+
+          <Link href={`/products/${item.id}`}>
+            <figure
+              className={`flex items-center justify-center pointer-events-none  ${
+                isHovered ? "scale-150" : ""
+              }`}
+            >
+              {item.product_type === "per bottle" && (
+                <img
+                  src={"/butter.svg"}
+                  alt={item.image}
+                  className="object-fit"
+                />
+              )}
+              {item.product_type === "per cup" && (
+                <img
+                  src={"/yoghurt.svg"}
+                  alt={item.image}
+                  className="object-fit"
+                />
+              )}
+              {item.product_type === "per plate" && (
+                <img
+                  src={"/roasted.svg"}
+                  alt={item.image}
+                  className="object-fit"
+                />
+              )}
+              <img src={item.image} className="hidden object-fill" alt="" />
+            </figure>
+          </Link>
+
+          <div>
+            <div className="text-center">
+              <p>
+                <i className="text-[12px] font-medium">{item.origin_type}</i>
+              </p>
+              <h3 className="text-[clamp(16px,1vw,20px)] font-bold">
+                {item.name}
+              </h3>
+            </div>
+            <div className="text-center text-[#A30551] font-extrabold mt-6 mb-10">
+              <h2 className="text-[clamp(20px,2vw,24px)]">{item.new_price}</h2>
+              <p className="text-[10px]">{item.product_type}</p>
+            </div>
+          </div>
+          <Button
+            className="w-max text-[16px] "
+            text={isLoading ? "ADDING TO CART" : "ADD TO CART"}
+            type="submit"
+            onClick={() => {
+              if (!isLoading && item.id !== undefined) {
+                mutate(item.id);
+              }
+            }}
+          />
+        </div>
       ) : (
         <motion.div
           onMouseEnter={handleMouseEnter}
