@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useForm, yupResolver } from "@mantine/form";
 import * as yup from "yup";
 import ProfileComp from "./profileComponent";
@@ -54,65 +53,14 @@ export default function PasswordChange() {
       await builder.use().profile.api.update_password(myForm.values);
     },
     mutationKey: builder.profile.api.update_password.get(),
-    onSuccess(data) {
+    onSuccess() {
       myForm.reset();
       toast.success("Password successfully updated");
     },
-    onError(error, variables, context) {
+    onError(error) {
       handleError(error as ErrorType);
     },
   });
-
-  // const token = JSON.parse(localStorage.getItem("my-user") as string)?.access;
-
-  // const handleUpdatePassword = async (value: PasswordUpdateProps) => {
-  //   try {
-  //     setLoading(true);
-  //     const { data } = await axios.put(
-  //       `${BASE_URL}/accounts/api/change_password/`,
-  //       {
-  //         old_password: value.old_password,
-  //         new_password: value.new_password,
-  //         confirm_password: value.confirm_password,
-  //       },
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     );
-  //     if (data) {
-  //       setLoading(false);
-  //       toast.success("Password updated successfully");
-  //       console.log(data);
-  //     }
-  //   } catch (error: any) {
-  //     setLoading(false);
-  //     const errorResponse = error?.response?.data;
-  //     if (errorResponse) {
-  //       if (typeof errorResponse === "string") toast.error(errorResponse);
-  //       else if (typeof errorResponse === "object") {
-  //         if (!Array.isArray(errorResponse)) {
-  //           Object.values(errorResponse).forEach((item) => {
-  //             if (typeof item === "string") toast.error(item);
-  //             else if (Array.isArray(item)) {
-  //               item.forEach((el) => {
-  //                 toast.error(el);
-  //               });
-  //             } else toast.error("Something went wrong");
-  //           });
-  //         } else if (Array.isArray(errorResponse)) {
-  //           errorResponse.forEach((item) => {
-  //             if (typeof item === "string") {
-  //               toast.error(item);
-  //             } else toast.error("Something went wrong");
-  //           });
-  //         }
-  //       } else toast.error("Something went wrong");
-  //     } else toast.error("Network Eror");
-  //   }
-  // };
 
   return (
     <div>

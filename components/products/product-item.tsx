@@ -157,15 +157,15 @@ export default function ProductItem({ item, boxStyle }: ProductItemProps) {
           animate={{ scale: isHovered ? 2 : 1 }}
         >
           {item.product_type === "per bottle" && (
-            <img src={"/butter.svg"} alt={item.image} />
+            <img src={"/butter.svg"} alt={item.image} className="object-fit" />
           )}
           {item.product_type === "per cup" && (
-            <img src={"/yoghurt.svg"} alt={item.image} />
+            <img src={"/yoghurt.svg"} alt={item.image} className="object-fit" />
           )}
           {item.product_type === "per plate" && (
-            <img src={"/roasted.svg"} alt={item.image} />
+            <img src={"/roasted.svg"} alt={item.image} className="object-fit" />
           )}
-          <img src={item.image} className="hidden" alt="" />
+          <img src={item.image} className="hidden object-fill" alt="" />
         </motion.figure>
       </Link>
       {isHovered ? (
