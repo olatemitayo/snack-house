@@ -2,13 +2,6 @@ import { createBuilder } from "@ibnlanre/portal";
 import { API, AUTHAPI, USERAPI } from "./axios-config";
 import { LoginData } from "@/types";
 
-export interface IUser {
-  first_name: string;
-  last_name: string;
-  email: string;
-  department: string;
-}
-
 export const builder = createBuilder({
   accounts: {
     api: {
@@ -70,32 +63,4 @@ export const builder = createBuilder({
       best_seller: () => API.get("/api/best_seller/"),
     },
   },
-  users: {
-    fetch: () => USERAPI.get("/users"),
-    create: (
-      data: Record<"first_name" | "last_name" | "email" | "department", string>
-    ) => USERAPI.post("/users", data),
-    details: (id: string) => USERAPI.get<IUser>(`/users/${id}`),
-  },
 });
-
-//create
-
-// url: accounts.api.sign_in
-// url: /accounts/api/sign_in
-// const builder = createBuilder({
-//   loginEndpoint: (data:Record<"email" | "password",string>) => LOGINAPI.post("/accounts/api/sign_in/", data),
-//   createStaff:  (data:Record<"email" | "password",string>) => LOGINAPI.post("/accounts/api/sign_in/", data),
-//   editStaff:  (data:Record<"email" | "password",string>) => LOGINAPI.post("/accounts/api/sign_in/", data),
-
-// });
-
-// {email: string, password: string}[]
-// Array<{email: string, password: string}>
-// Array<Record<string, string>>
-
-// const person: Record<string, string | number> = {
-//     name: "Prosper",
-//     age: 50
-// }
-// builder.use().

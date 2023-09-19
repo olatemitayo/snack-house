@@ -13,7 +13,10 @@ export default function OrderHistory() {
             <h2 className="text-[32px] mb-[28px]">Order History</h2>
             <div className=" flex flex-col gap-6 justify-center items-center">
               {data?.results.map((item: any) => (
-                <div className="flex justify-between mb-6 w-full pb-6 border-b border-[#EBDBE0]">
+                <div
+                  key={item?.product?.id}
+                  className="flex justify-between mb-6 w-full pb-6 border-b border-[#EBDBE0]"
+                >
                   <div className="flex gap-7 items-center">
                     <figure>
                       {item?.product?.name?.includes("BUTTER") && (

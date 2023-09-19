@@ -28,7 +28,7 @@ export default function CheckOutHeader() {
     <div className="pt-[130px] flex justify-between px-[clamp(10px,6vw,100px)] w-full items-center max-w-[1440px] mx-auto">
       <div className="flex justify-between w-full">
         {CheckHeader.map((item) => (
-          <div className="flex gap-8">
+          <div key={item.id} className="flex gap-8">
             <Link href={item.link} className="">
               <h3 key={item.id}>{item.title}</h3>
             </Link>

@@ -7,7 +7,7 @@ import Footer from "@/components/common/footer";
 import BackgroundLayout from "@/components/common/bg-layout";
 import useCartProduct from "@/hooks/use-cart-list";
 
-export default function cart() {
+export default function Cart() {
   const { data, isLoading } = useCartProduct();
   console.log(data);
   return (

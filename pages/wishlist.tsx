@@ -10,16 +10,9 @@ import useWishList from "@/hooks/use-wish-list";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
-export default function wishlist() {
-  // const { data, isLoading } = useQuery({
-  //   queryFn: async () => {
-  //     let { data } = await builder.use().wishlist.api.list_wishlist_item();
-  //     return data;
-  //   },
-  //   queryKey: builder.wishlist.api.list_wishlist_item.get(),
-  // });
-
+export default function Wishlist() {
   const { data, isLoading } = useWishList();
+
   return (
     <BackgroundLayout>
       <Navbar className="!bg-[#F1E7EB]" />
