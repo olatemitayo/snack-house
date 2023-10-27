@@ -38,14 +38,14 @@ export default function SignIn() {
     mutationFn: async () =>
       await builder.use().accounts.api.sign_in(myForm.values),
     mutationKey: builder.accounts.api.sign_in.get(),
-    onSuccess(data, variables, context) {
+    onSuccess(data) {
       setCookieState(JSON.stringify(data?.data));
       cookieStorage.setItem("sh_auth", JSON.stringify(data?.data));
       myForm.reset();
       toast.success("Welcome", { autoClose: 2000 });
       push("/");
     },
-    onError(error, variables, context) {
+    onError(error) {
       handleError(error as ErrorType);
     },
   });

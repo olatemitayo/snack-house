@@ -1,14 +1,6 @@
-// import { ProfileLink } from "@/Data/data";
-// import { UserDetails } from "@/pages/_app";
 import { cookieStorage, usePortal } from "@ibnlanre/portal";
 import Link from "next/link";
-import router, { useRouter } from "next/router";
-import { useState, useEffect } from "react";
-
-const handleLogout = () => {
-  localStorage.clear();
-  window.location.href = "/login";
-};
+import { useRouter } from "next/router";
 
 interface userprops {
   first_name?: string;
@@ -29,12 +21,6 @@ export const ProfileLink = [
     title: "Order History",
     link: "/profile/order-history",
   },
-
-  // {
-  //   id: "3",
-  //   title: "Wish List",
-  //   link: "/profile/wishlist",
-  // },
   {
     id: "4",
     title: "Change Password",
@@ -52,6 +38,11 @@ export default function ProfileComp({ children }: any) {
     JSON.parse(cookieStorage.getItem("sh_auth") as string)
   );
   const router = useRouter();
+
+  const handleLogout = () => {
+    cookieStorage.clear();
+    window.location.assign("/login");
+  };
   return (
     <div className="">
       <div className=" max-w-page mx-auto py-[clamp(28px,4vw,48px)]  pt-[130px]  px-[clamp(10px,6vw,100px)]">
@@ -63,6 +54,7 @@ export default function ProfileComp({ children }: any) {
               <h5 className="text-[#121212] font-bold">
                 {`${details?.last_name} ${details?.first_name}`}
               </h5>
+
               <p>{details?.email}</p>
             </figure>
             <ul className="grid gap-4 text-center">

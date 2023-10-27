@@ -1,7 +1,7 @@
 import AuthHeaders from "./auth-headers";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { Loader, PasswordInput, TextInput } from "@mantine/core";
-import CustomButton from "./button";
+
 import { useForm, yupResolver } from "@mantine/form";
 import * as yup from "yup";
 import { useRouter } from "next/router";
