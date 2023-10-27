@@ -44,58 +44,56 @@ export default function ProfileComp({ children }: any) {
     window.location.assign("/login");
   };
   return (
-    <div className="">
-      <div className=" max-w-page mx-auto py-[clamp(28px,4vw,48px)]  pt-[130px]  px-[clamp(10px,6vw,100px)]">
-        <h1 className="text-40 font-bold">Profile</h1>
-        <div className="flex justify-between pt-10 ">
-          <div className="w-30% grid gap-10">
-            <figure className="flex flex-col items-center gap-4">
-              <img src="/dp.svg" alt="" />
-              <h5 className="text-[#121212] font-bold">
-                {`${details?.last_name} ${details?.first_name}`}
-              </h5>
+    <div className=" max-w-page mx-auto py-[clamp(28px,4vw,48px)]  pt-[130px] clg:pt-[100px] px-[clamp(10px,6vw,100px)] ">
+      <h1 className="text-40 font-bold">Profile</h1>
+      <div className="flex clg:flex-col justify-between pt-10 ">
+        <div className="w-30% clg:w-full grid gap-10">
+          <figure className="flex flex-col items-center gap-4">
+            <img src="/dp.svg" alt="" />
+            <h5 className="text-[#121212] font-bold">
+              {`${details?.last_name} ${details?.first_name}`}
+            </h5>
 
-              <p>{details?.email}</p>
-            </figure>
-            <ul className="grid gap-4 text-center">
-              {ProfileLink.map((item) => (
-                <Link
-                  key={item.id}
-                  href={item.link}
-                  className={`${
-                    router.pathname === item.link ||
-                    router.pathname === `${item.link}`
-                      ? " bg-[#6B6068] rounded-lg"
-                      : ""
-                  }  `}
-                >
-                  {item.id === "5" ? (
-                    <li
-                      className="border rounded-lg py-[15px] text-[#C51638]  px-16 border-[#771132]"
-                      key={item.id}
-                      onClick={() => handleLogout()}
-                    >
-                      {item.title}
-                    </li>
-                  ) : (
-                    <li
-                      key={item.id}
-                      className={`${
-                        router.pathname === item.link ||
-                        router.pathname === `${item.link}`
-                          ? "border rounded-lg py-[15px] px-16  text-[#fff] border-[#6B6068]"
-                          : "border rounded-lg py-[15px] px-16  text-[#121212] border-[#771132]"
-                      }  `}
-                    >
-                      {item.title}
-                    </li>
-                  )}
-                </Link>
-              ))}
-            </ul>
-          </div>
-          <div className="w-[50%]">{children}</div>
+            <p>{details?.email}</p>
+          </figure>
+          <ul className="grid gap-4 text-center">
+            {ProfileLink.map((item) => (
+              <Link
+                key={item.id}
+                href={item.link}
+                className={`${
+                  router.pathname === item.link ||
+                  router.pathname === `${item.link}`
+                    ? " bg-[#6B6068] rounded-lg"
+                    : ""
+                }  `}
+              >
+                {item.id === "5" ? (
+                  <li
+                    className="border rounded-lg py-[15px] text-[#C51638]  px-16 border-[#771132]"
+                    key={item.id}
+                    onClick={() => handleLogout()}
+                  >
+                    {item.title}
+                  </li>
+                ) : (
+                  <li
+                    key={item.id}
+                    className={`${
+                      router.pathname === item.link ||
+                      router.pathname === `${item.link}`
+                        ? "border rounded-lg py-[15px] px-16  text-[#fff] border-[#6B6068]"
+                        : "border rounded-lg py-[15px] px-16  text-[#121212] border-[#771132]"
+                    }  `}
+                  >
+                    {item.title}
+                  </li>
+                )}
+              </Link>
+            ))}
+          </ul>
         </div>
+        <div className="w-[50%] pt-6 clg:w-full clg:mx-auto">{children}</div>
       </div>
     </div>
   );

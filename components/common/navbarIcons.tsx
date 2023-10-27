@@ -49,7 +49,7 @@ export default function Icons({ className }: any) {
           </div>
         </Link>
         <Link href={"/profile"}>
-          {details?.last_name !== "" ? (
+          {details?.email ? (
             <img
               src="/dp.svg"
               alt="user"

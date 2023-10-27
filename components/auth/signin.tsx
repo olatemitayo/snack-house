@@ -62,7 +62,7 @@ export default function SignIn() {
           />
           <form
             className="w-[80%] mx-auto mt-[clamp(20px,4vw,60px)]"
-            onSubmit={myForm.onSubmit((value) => {
+            onSubmit={myForm.onSubmit(() => {
               mutate();
             })}
           >
