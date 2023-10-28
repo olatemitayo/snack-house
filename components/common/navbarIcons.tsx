@@ -44,9 +44,13 @@ export default function Icons({ className }: any) {
             alt="cart"
             className="w-[clamp(18px,1.5vw,24px)]"
           />
-          <div className="absolute text-[#C51638] border border-white rounded-[50%] h-[20px] w-[20px] text-center bg-white  font-extrabold right-0 top-0 mt-[-12px] me-[-18px] text-[12px]">
-            {data?.results?.length}
-          </div>
+          {details?.email ? (
+            <div className="absolute text-[#C51638] border border-white rounded-[50%] h-[20px] w-[20px] text-center bg-white  font-extrabold right-0 top-0 mt-[-12px] me-[-18px] text-[12px]">
+              {data?.results?.length}
+            </div>
+          ) : (
+            <></>
+          )}
         </Link>
         <Link href={"/profile"}>
           {details?.email ? (
